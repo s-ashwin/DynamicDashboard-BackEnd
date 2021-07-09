@@ -6,7 +6,7 @@ const { getChartById, createChart, updateChart } = require('../controllers/chart
 
 router.param('userId', getUserById)
 router.param('chartId', getChartById)
-router.post("/chart/create/:userId/:chartId",isSignedin, isAdmin ,createChart)
+router.post("/chart/create/:userId",isSignedin, isAdmin ,createChart)
 router.post("/chart/update/:userId/:chartId",isSignedin, isAdmin ,updateChart)
 
 module.exports=router

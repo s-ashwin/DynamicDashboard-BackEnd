@@ -30,7 +30,7 @@ exports.updateChart = (req,res)=>{
         {$set: req.body},
         {new:true, useFindAndModify:false},
         (err,chart)=>{
-            if(err || !user){
+            if(err || !chart){
                 return res.status(400).json({
                     error:"Update Unsuccessful"
                 })

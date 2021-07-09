@@ -11,4 +11,4 @@ const chartSchema = new mongoose.Schema({
     roles:[{ type:ObjectId, ref:"Role" }]
 })
 
-module.exports = mongoose.model("Chart". chartSchema)
+module.exports = mongoose.model("Chart", chartSchema)

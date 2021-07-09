@@ -9,6 +9,7 @@ require("dotenv").config();
 const roleRoutes = require('./routes/role')
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
+const chartRoutes = require('./routes/chart')
 
 app.use(cors())
 app.use(bodyparser.json())
@@ -20,6 +21,7 @@ mongoose.connect(process.env.DBURL, {useNewUrlParser: true, useUnifiedTopology: 
 app.use('/api', authRoutes)
 app.use('/api', roleRoutes)
 app.use('/api', userRoutes)
+app.use('/api', chartRoutes)
 
 app.get('/', (req,res)=> res.json({message:"heyy"}))
 

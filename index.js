@@ -21,4 +21,8 @@ app.use('/api', roleRoutes)
 
 app.get('/', (req,res)=> res.json({message:"heyy"}))
 
+if(!process.env.DETA_RUNTIME){
+    app.listen(4000)
+}
+
 module.exports=app

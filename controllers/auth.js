@@ -26,7 +26,9 @@ exports.signin = (req, res)=> {
 
     const{email,password} = req.body
 
-    User.findOne({email},(err,user)=>{
+    User.findOne({email})
+        .populate('role')
+        .exec((err,user)=>{
         if(err || !user){
             return res.status(400).json({
                 error:"No User Found"

@@ -12,6 +12,18 @@ exports.getRoleById=(req,res,next,id)=>{
     })
 }
 
+exports.getARole = (req,res)=>{
+    Role.findOne({_id:req.role._id})
+        .exec((err,role)=>{
+            if(err || !role){
+                return res.status(400).json({
+                    error:"Error in getting role"
+                })
+            }
+            res.json(role)
+        })
+}
+
 exports.updateRole = (req,res)=>{
     Role.findByIdAndUpdate(
         {_id: req.role._id},
@@ -48,4 +60,15 @@ exports.getAllRole = (req,res)=>{
             }
             res.json(roles)
         })
+}
+
+exports.deleteRole=(req,res)=>{
+
+    Role.findByIdAndDelete(req.role._id)
+    .exec((err,removed)=>{
+        if(err){
+            return res.status(400).json({error:"Delete Role Failed"})
+        }
+        res.json({message:`${removed.name} Role Deleted`})
+    })
 }

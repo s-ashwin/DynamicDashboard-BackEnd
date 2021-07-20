@@ -8,6 +8,10 @@ const chartSchema = new mongoose.Schema({
         required: true,
         unique:true,
     },
+    data:{
+        type:Object,
+        required: true
+    },
     roles:[{ type:ObjectId, ref:"Role" }]
 })
 

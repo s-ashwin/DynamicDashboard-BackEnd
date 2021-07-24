@@ -40,7 +40,7 @@ exports.getAChart = (req,res)=>{
 
 exports.getMyCharts = (req,res)=>{
     Chart.find({})
-    .populate({path:"roles", match:{name:req.profile.role.name}})
+    .populate({path:"roles", match:{name:req.profile.role? req.profile.role.name : "Unassigned"}})
     .exec((err,charts)=>{
         if(err || !charts){
             return res.status(400).json({

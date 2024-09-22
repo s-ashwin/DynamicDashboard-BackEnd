@@ -15,6 +15,8 @@ app.use(cors())
 app.use(bodyparser.json())
 app.use(cookieparser())
 
+const port = process.env.PORT || 3000
+
 mongoose.connect(process.env.DBURL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(()=>{console.log("Connected to DB");})
 
@@ -25,8 +27,6 @@ app.use('/api', chartRoutes)
 
 app.get('/', (req,res)=> res.json({message:"heyy"}))
 
-if(!process.env.DETA_RUNTIME){
-    app.listen(4000)
-}
+app.listen(port)
 
 module.exports=app
